@@ -355,6 +355,14 @@ let vol = document.getElementById('vol');
 let vol_dot = document.getElementById('vol_dot');
 let vol_bar = document.getElementsByClassName('vol_bar')[0];
 
+const vol_controller = (vol) => {
+    vol_bar.style.width = `${vol}%`;
+    vol_bar.style.width = `${vol}%`;
+    vol_dot.style.left = `${vol}%`;
+    music.volume = vol/100;
+}
+vol_controller(vol.value);
+
 vol.addEventListener('change', ()=>{
     if (vol.value == 0) {
         vol_icon.classList.remove('bi-volume-down-fill');
@@ -372,10 +380,7 @@ vol.addEventListener('change', ()=>{
         vol_icon.classList.add('bi-volume-up-fill');
     }
 
-    let vol_a = vol.value;
-    vol_bar.style.width = `${vol_a}%`;
-    vol_dot.style.left = `${vol_a}%`;
-    music.volume = vol_a/100;
+    vol_controller(vol.value);
 })
 
 
